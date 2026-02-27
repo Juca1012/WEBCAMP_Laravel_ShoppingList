@@ -37,7 +37,7 @@
                 <td>{{ $shoppingList->name }}</td>
 
                 <td>
-                <form method="post" action="/shopping_list/complete/{{ $shoppingList->id }}">
+                <form method="post" action="/shopping_list/complete/{{ $shoppingList->id }}" onsubmit="return confirm('この「買うもの」を「完了」にします。よろしいですか？');">
                     @csrf
                     <button type="submit">完了</button>
                 </form>
@@ -46,7 +46,7 @@
                 <td style="width:15px;"></td>
 
                 <td>
-                    <form method="post" action="/shopping_list/delete/{{ $shoppingList->id }}">
+                    <form method="post" action="/shopping_list/delete/{{ $shoppingList->id }}" onsubmit="return confirm('この「買うもの」を「削除します」。よろしいですか？');">
                         @csrf
                         @method('delete')
                         <button type="submit">削除</button>

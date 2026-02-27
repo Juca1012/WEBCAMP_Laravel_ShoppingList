@@ -28,7 +28,7 @@ class ShoppingListController extends Controller
     {
         $shoppingLists = ShoppingList::where('user_id', auth()->id())
         ->orderBy('name')
-        ->paginate(3);
+        ->paginate(12);
 
     return view('shopping_list.list', compact('shoppingLists'));
     }
