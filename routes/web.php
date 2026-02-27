@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ShoppingListController;
+use App\Http\Controllers\CompletedShoppingListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,8 @@ Route::prefix('/user')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
     Route::get('/logout', [AuthController::class, 'logout']);
-
+    Route::post('/shopping_list/register', [ShoppingListController::class, 'register']);
+    Route::delete('/shopping_list/delete/{id}', [ShoppingListController::class, 'delete']);
+    Route::post('/shopping_list/complete/{id}', [ShoppingListController::class, 'complete']);
+    Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'list']);
 });
