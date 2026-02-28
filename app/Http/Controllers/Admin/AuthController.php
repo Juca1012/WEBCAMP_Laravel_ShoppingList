@@ -15,6 +15,11 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'login_id' => 'required',
+            'password' => 'required',
+        ]);
+        
         $credentials = $request->only('login_id', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {

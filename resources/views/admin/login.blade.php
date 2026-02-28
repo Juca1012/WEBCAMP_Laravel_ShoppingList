@@ -7,6 +7,12 @@
 <body>
     <h1>管理画面 ログイン</h1>
 
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <div>{{ $error }}</div>
+    @endforeach
+@endif
+
     <form method="post" action="/admin/login">
         @csrf
         <div>
